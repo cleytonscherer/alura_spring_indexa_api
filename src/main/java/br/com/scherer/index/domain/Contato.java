@@ -1,9 +1,6 @@
 package br.com.scherer.index.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.Valid;
 
 import java.time.LocalDate;
@@ -15,6 +12,13 @@ public class Contato {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long    id;
     private String  nome;
+
+    //private String  avatar;
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name = "avatar", columnDefinition = "LONGBLOB")
+    private byte[]  avatar;
+
     private String  telefone;
     private String  email;
     private LocalDate   aniversario;
@@ -26,6 +30,7 @@ public class Contato {
 
     public Contato(ContatoCadastro dto) {
         this.nome = dto.nome();
+        this.avatar = dto.avatar();
         this.telefone = dto.telefone();
         this.email = dto.email();
         this.aniversario = dto.aniversario();
@@ -39,6 +44,10 @@ public class Contato {
 
     public String getNome() {
         return nome;
+    }
+
+    public byte[] getAvatar() {
+        return avatar;
     }
 
     public String getTelefone() {
@@ -64,6 +73,9 @@ public class Contato {
     public void atualizar(@Valid ContatoAtualizacao dados) {
         if (dados.nome() != null) {
             this.nome = dados.nome();
+        }
+        if (dados.avatar() != null) {
+            this.avatar = dados.avatar();
         }
         if (dados.telefone() != null) {
             this.telefone = dados.telefone();

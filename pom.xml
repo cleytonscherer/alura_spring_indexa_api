@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.scherer</groupId>
-	<artifactId>index-api</artifactId>
+	<artifactId>indexa-api</artifactId>
 	<version>1.0.0</version>
-	<name>index</name>
+	<name>indexa</name>
 	<description>API Agenda Index para integração com Angular</description>
 	<url/>
 	<licenses>
@@ -63,6 +63,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!--
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		-->
 
 	</dependencies>
 

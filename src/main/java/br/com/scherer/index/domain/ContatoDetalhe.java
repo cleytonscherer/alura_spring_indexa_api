@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public record ContatoDetalhe(
         Long        id,
+        byte[]      avatar,
         String      nome,
         String      telefone,
         String      email,
@@ -13,6 +14,7 @@ public record ContatoDetalhe(
 ) {
     public ContatoDetalhe(Contato contato) {
         this(   contato.getId(),
+                contato.getAvatar(),
                 contato.getNome(),
                 contato.getTelefone(),
                 contato.getEmail(),

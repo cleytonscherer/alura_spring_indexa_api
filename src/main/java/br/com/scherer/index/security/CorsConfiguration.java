@@ -10,8 +10,24 @@ public class CorsConfiguration implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                //.allowedOrigins("http://localhost:3000")
+                .allowedHeaders("*")
                 .allowedOrigins("http://localhost:4200")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
     }
+
+    /*
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedHeaders("*")
+                //.allowedHeaders("Access-Control-Allow-Headers", "Content-Type, x-requested-with")
+                //.allowCredentials(true)
+                //.allowedOrigins("http://localhost:3000")
+                //.allowedOrigins("http://localhost:4200")
+                .allowedOrigins("*")
+                .allowedMethods("*");
+        //.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
+    }
+
+     */
 }

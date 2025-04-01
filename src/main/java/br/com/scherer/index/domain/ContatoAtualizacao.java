@@ -8,9 +8,10 @@ public record ContatoAtualizacao(
         @NotNull(message = "ID do Contato deve ser informado")
         Long        id,
         String      nome,
+        byte[]      avatar,
         String      telefone,
         String      email,
-        LocalDate aniversario,
+        LocalDate   aniversario,
         String      redes,
         String      observacoes
 ) {

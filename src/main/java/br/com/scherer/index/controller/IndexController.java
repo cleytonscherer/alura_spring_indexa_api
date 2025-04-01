@@ -23,12 +23,14 @@ public class IndexController {
 
     @GetMapping
     public ResponseEntity<List<Contato>> listarTodos() {
+        System.out.println("retorando contato #2");
         return ResponseEntity.ok(service.listarTodos());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ContatoDetalhe> listarContato(@PathVariable Long id) {
         Contato contato = service.buscarPorId(id);
+        System.out.println("retorando contato #1");
         return ResponseEntity.ok(new ContatoDetalhe(contato));
     }
 
@@ -41,10 +43,12 @@ public class IndexController {
         Contato contato = new Contato(contatoCadastro);
         service.cadastrar(contato);
         var uri = uriBuilder.path("/contatos/{id}").buildAndExpand(contato.getId()).toUri();
+        System.out.println("Gravou no banco de dados");
         return ResponseEntity.created(uri).body(new ContatoDetalhe(contato));
     }
 
     @PutMapping
+    //@CrossOrigin(origins = "http://localhost:4200")
     @Transactional
     public ResponseEntity<ContatoDetalhe> atualizar(@RequestBody @Valid ContatoAtualizacao dados) {
         Contato contato = service.buscarPorId(dados.id());
